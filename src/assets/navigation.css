@@ -1,0 +1,19 @@
+.navigation {
+  width: 100%;
+  background: black;
+}
+.navigation ul {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  align-items: center;
+}
+.navigation a li {
+  color: white;
+}
+.nav-active {
+  background: rgb(255, 141, 34);
+  padding: 24px;
+  border-radius: 16px;
+  height: 100%;
+}
