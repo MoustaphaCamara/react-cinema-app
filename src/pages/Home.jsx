@@ -29,8 +29,8 @@ const Home = () => {
         />
       </header>
       <div className="movie-container">
-        {movieData.map((movie, index) => (
-          <Movie key={index} movie={movie} />
+        {movieData.map((movie) => (
+          <Movie key={movie.id} movie={movie} />
         ))}
       </div>
     </div>
