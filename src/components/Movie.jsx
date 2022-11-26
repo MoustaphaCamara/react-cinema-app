@@ -73,6 +73,19 @@ const Movie = ({ movie }) => {
     }
     return genreArray;
   };
+
+  const addToStorage = () => {
+    let storedData = window.localStorage.movies
+      ? window.localStorage.movies.split(",")
+      : [];
+    if (!storedData.includes(movie.id.toString())) {
+      storedData.push(movie.id);
+      window.localStorage.movies = storedData;
+    }
+  };
+  const removeFromStorage = () => {
+    let storedData = window.localStorage.movies.split(",");
+  };
   return (
     <div className="movie">
       <div className="img-container">
@@ -89,7 +102,8 @@ const Movie = ({ movie }) => {
         <link rel="stylesheet" href="style.css" />
         <h3>{movie.original_title}</h3>
         <div className="description">
-          Sorti le : {dateFormatter(movie.release_date)}
+          Sorti le :{" "}
+          {movie.release_date ? dateFormatter(movie.release_date) : ""}
         </div>
         <p className="subtitle">{movie.vote_average}/10 ⭐</p>
         <ul>
@@ -99,25 +113,21 @@ const Movie = ({ movie }) => {
         </ul>
         <p className="subtitle">Synopsis</p>
         <p className="description overview">{movie.overview}</p>
-        <div className="button-container">
-          <button
-            onClick={(e) => {
-              e.target.style.display = "none";
-              e.target.nextElementSibling.style.display = "block";
-            }}
-          >
+        {movie.genre_ids ? (
+          <button className="btn" onClick={() => addToStorage()}>
             🖤
           </button>
+        ) : (
           <button
-            style={{ display: "none" }}
-            onClick={(e) => {
-              e.target.style.display = "none";
-              e.target.previousElementSibling.style.display = "block";
+            className="btn"
+            onClick={() => {
+              removeFromStorage();
+              window.location.reload();
             }}
           >
             ❤️
           </button>
-        </div>
+        )}
       </div>
     </div>
   );
