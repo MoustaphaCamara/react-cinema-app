@@ -21,7 +21,7 @@ const Navigation = () => {
         </ul>
       </div>
       <div className="logo">
-        <h1>React movies</h1>
+        <h1>100 critiques</h1>
       </div>
     </div>
   );

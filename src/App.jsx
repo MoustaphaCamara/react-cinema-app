@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Liked from "./pages/Liked";
-
+import "./index.css";
 function App() {
   return (
     <div className="App-container">

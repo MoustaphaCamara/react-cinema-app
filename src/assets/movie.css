@@ -12,7 +12,8 @@ input[type="text"] {
   border-radius: var(--high);
 }
 
-.movie-container {
+.movie-container,
+.liked-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -30,6 +31,9 @@ input[type="text"] {
   height: 480px;
   /* max-height: 350px; */
   overflow: hidden;
+}
+.liked-container .movie {
+  height: auto;
 }
 .info-container {
   padding: var(--medium);
@@ -69,7 +73,8 @@ ul li {
   width: 100%;
   box-shadow: 0 0 5px gray;
 }
-button {
+button,
+.btn {
   cursor: pointer;
   padding: 16px;
   background: var(--color1);

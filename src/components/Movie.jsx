@@ -85,6 +85,8 @@ const Movie = ({ movie }) => {
   };
   const removeFromStorage = () => {
     let storedData = window.localStorage.movies.split(",");
+    let newData = storedData.filter((id) => id != movie.id);
+    window.localStorage.movies = newData;
   };
   return (
     <div className="movie">
@@ -99,7 +101,6 @@ const Movie = ({ movie }) => {
         />
       </div>
       <div className="info-container">
-        <link rel="stylesheet" href="style.css" />
         <h3>{movie.original_title}</h3>
         <div className="description">
           Sorti le :{" "}
@@ -111,10 +112,24 @@ const Movie = ({ movie }) => {
             ? genreFinder().map((genre) => <li key={genre}>{genre}</li>)
             : null}
         </ul>
+        <ul>
+          {movie.genres
+            ? movie.genres.map((genre, index) => (
+                <li key={index}>{genre.name}</li>
+              ))
+            : null}
+        </ul>
         <p className="subtitle">Synopsis</p>
         <p className="description overview">{movie.overview}</p>
         {movie.genre_ids ? (
-          <button className="btn" onClick={() => addToStorage()}>
+          <button
+            id={movie.id}
+            className="btn"
+            onClick={(e) => {
+              addToStorage();
+              e.target.textContent = "❤️";
+            }}
+          >
             🖤
           </button>
         ) : (
